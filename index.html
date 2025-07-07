@@ -15,7 +15,7 @@
         .student-entry:not(:first-child) { margin-top: 1rem; }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen">
+<body class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen py-8">
 
     <div class="container mx-auto p-4 md:p-8 max-w-2xl">
         <header class="text-center mb-8">
@@ -23,8 +23,8 @@
             <p class="text-gray-600 mt-2">Điền thông tin nhóm và đề tài của bạn vào form bên dưới</p>
         </header>
 
-        <!-- Form Đăng ký -->
-        <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <!-- Wrapper cho Form và Kết quả -->
+        <div id="form-wrapper" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
             <form id="registrationForm">
                 <!-- Vùng nhập thông tin sinh viên -->
                 <div id="student-list" class="space-y-4">
@@ -68,6 +68,12 @@
                 <div id="formMessage" class="mt-4 text-center font-medium"></div>
             </form>
         </div>
+        
+        <!-- Vùng hiển thị kết quả sau khi đăng ký thành công -->
+        <div id="result-wrapper" class="hidden bg-white p-6 md:p-8 rounded-xl shadow-lg">
+            <!-- Nội dung kết quả sẽ được chèn vào đây -->
+        </div>
+
 
         <footer class="text-center mt-12 text-gray-500 text-sm">
             <p>Phát triển bởi Gemini &copy; <span id="year"></span></p>
@@ -101,10 +107,35 @@
         const formMessage = document.getElementById('formMessage');
         const studentListDiv = document.getElementById('student-list');
         const addStudentBtn = document.getElementById('addStudentBtn');
+        const formWrapper = document.getElementById('form-wrapper');
+        const resultWrapper = document.getElementById('result-wrapper');
         
         document.getElementById('year').textContent = new Date().getFullYear();
 
         let studentCount = 1;
+
+        // HÀM RESET FORM VỀ TRẠNG THÁI BAN ĐẦU
+        function resetFormState() {
+            form.reset();
+            studentListDiv.innerHTML = `
+                <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Thông tin Nhóm</h3>
+                <div class="student-entry p-4 border rounded-lg bg-gray-50">
+                    <p class="font-medium text-gray-700 mb-2">Thành viên 1 (Nhóm trưởng)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Mã số Sinh viên</label>
+                            <input type="text" name="student_id" placeholder="Nhập MSSV" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Họ và Tên</label>
+                            <input type="text" name="student_name" placeholder="Nhập Họ và Tên" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition">
+                        </div>
+                    </div>
+                </div>
+            `;
+            studentCount = 1;
+            formMessage.textContent = '';
+        }
 
         // HÀM THÊM TRƯỜNG NHẬP LIỆU CHO SINH VIÊN MỚI
         addStudentBtn.addEventListener('click', () => {
@@ -132,16 +163,11 @@
         studentListDiv.addEventListener('click', (e) => {
             if (e.target.classList.contains('remove-student-btn')) {
                 e.target.closest('.student-entry').remove();
-                // Cập nhật lại số thứ tự thành viên
                 const remainingStudents = studentListDiv.querySelectorAll('.student-entry');
                 studentCount = remainingStudents.length;
                 remainingStudents.forEach((student, index) => {
                     const title = student.querySelector('p');
-                    if(index === 0) {
-                        title.textContent = `Thành viên 1 (Nhóm trưởng)`;
-                    } else {
-                        title.textContent = `Thành viên ${index + 1}`;
-                    }
+                    title.textContent = `Thành viên ${index + 1}${index === 0 ? ' (Nhóm trưởng)' : ''}`;
                 });
             }
         });
@@ -159,40 +185,61 @@
             studentEntries.forEach(entry => {
                 const id = entry.querySelector('input[name="student_id"]').value;
                 const name = entry.querySelector('input[name="student_name"]').value;
-                students.push({ id: id, name: name });
+                students.push({ id, name });
             });
 
             const project_title = form.project_title.value;
 
             try {
                 await addDoc(collection(db, "projects"), {
-                    students: students, // Lưu dưới dạng mảng các object
+                    students: students,
                     project_title: project_title,
                     registration_time: new Date()
                 });
                 
-                formMessage.textContent = '✅ Đăng ký thành công!';
-                formMessage.className = 'mt-4 text-center font-medium text-green-600';
-                form.reset();
-                // Reset lại form về trạng thái ban đầu chỉ có 1 sinh viên
-                studentListDiv.innerHTML = `
-                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Thông tin Nhóm</h3>
-                    <div class="student-entry p-4 border rounded-lg bg-gray-50">
-                        <p class="font-medium text-gray-700 mb-2">Thành viên 1 (Nhóm trưởng)</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Mã số Sinh viên</label>
-                                <input type="text" name="student_id" placeholder="Nhập MSSV" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Họ và Tên</label>
-                                <input type="text" name="student_name" placeholder="Nhập Họ và Tên" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition">
+                // HIỂN THỊ KẾT QUẢ
+                let studentRows = students.map((student, index) => `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-3 text-center">${index + 1}</td>
+                        <td class="p-3">${student.id}</td>
+                        <td class="p-3">${student.name}</td>
+                        <td class="p-3">${index === 0 ? '<strong>Nhóm trưởng</strong>' : ''}</td>
+                    </tr>
+                `).join('');
+
+                resultWrapper.innerHTML = `
+                    <h2 class="text-2xl font-bold text-green-600 text-center mb-6">✅ Đăng ký Thành Công!</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-semibold text-lg">Tên đề tài:</h3>
+                            <p class="mt-1 p-3 bg-gray-100 rounded-md">${project_title}</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Danh sách thành viên:</h3>
+                            <div class="mt-1 overflow-x-auto">
+                                <table class="w-full min-w-full text-left border-collapse">
+                                    <thead class="bg-gray-200">
+                                        <tr>
+                                            <th class="p-3 text-sm font-semibold tracking-wide text-center">STT</th>
+                                            <th class="p-3 text-sm font-semibold tracking-wide">Mã Sinh viên</th>
+                                            <th class="p-3 text-sm font-semibold tracking-wide">Họ và Tên</th>
+                                            <th class="p-3 text-sm font-semibold tracking-wide">Ghi chú</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">${studentRows}</tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
+                    <button type="button" id="registerAgainBtn" class="mt-8 w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                        Đăng ký Nhóm Khác
+                    </button>
                 `;
-                studentCount = 1;
+                
+                formWrapper.classList.add('hidden');
+                resultWrapper.classList.remove('hidden');
 
+                resetFormState();
 
             } catch (error) {
                 console.error("Error adding document: ", error);
@@ -201,6 +248,14 @@
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Hoàn tất Đăng ký';
+            }
+        });
+
+        // LẮNG NGHE SỰ KIỆN CHO NÚT "ĐĂNG KÝ NHÓM KHÁC"
+        resultWrapper.addEventListener('click', (e) => {
+            if (e.target && e.target.id === 'registerAgainBtn') {
+                resultWrapper.classList.add('hidden');
+                formWrapper.classList.remove('hidden');
             }
         });
 
