@@ -1,127 +1,263 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Đăng ký Đề tài</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .student-entry:not(:first-child) { margin-top: 1rem; }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .student-entry:not(:first-child) {
+        margin-top: 1rem;
+      }
     </style>
-</head>
-<body class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen py-8">
-
+  </head>
+  <body
+    class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen py-8"
+  >
     <div class="container mx-auto p-4 md:p-8 max-w-2xl">
-        <header class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-blue-600">Form Đăng ký đề tài môn học</h1>
-            <h2 class="text-xl md:text-2xl font-semibold text-gray-800">Phát triển ứng dụng với J2EE</h2>
-            <p class="text-gray-600 mt-2">Điền thông tin nhóm và đề tài của bạn vào form bên dưới</p>
-        </header>
+      <header class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-blue-600">
+          Form Đăng ký đề tài môn học
+        </h1>
+        <h2 class="text-xl md:text-2xl font-semibold text-gray-800">
+          Phát triển ứng dụng với J2EE
+        </h2>
+        <p class="text-gray-600 mt-2">
+          Điền thông tin nhóm và đề tài của bạn vào form bên dưới
+        </p>
+      </header>
 
-        <!-- Wrapper cho Form và Kết quả -->
-        <div id="form-wrapper" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
-            <form id="registrationForm">
-                <!-- Vùng nhập thông tin sinh viên -->
-                <div id="student-list" class="space-y-4">
-                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Thông tin Nhóm</h3>
-                    <!-- Sinh viên đầu tiên (mặc định) -->
-                    <div class="student-entry p-4 border rounded-lg bg-gray-50">
-                        <p class="font-medium text-gray-700 mb-2">Thành viên 1 (Nhóm trưởng)</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Mã số Sinh viên</label>
-                                <input type="text" name="student_id" placeholder="Nhập MSSV" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Họ và Tên</label>
-                                <input type="text" name="student_name" placeholder="Nhập Họ và Tên" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition">
-                            </div>
-                        </div>
-                    </div>
+      <!-- Wrapper cho Form và Kết quả -->
+      <div id="form-wrapper" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <form id="registrationForm">
+          <!-- Vùng nhập thông tin sinh viên -->
+          <div id="student-list" class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">
+              Thông tin Nhóm
+            </h3>
+            <!-- Sinh viên đầu tiên (mặc định) -->
+            <div class="student-entry p-4 border rounded-lg bg-gray-50">
+              <p class="font-medium text-gray-700 mb-2">
+                Thành viên 1 (Nhóm trưởng)
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700"
+                    >Mã số Sinh viên</label
+                  >
+                  <input
+                    type="text"
+                    name="student_id"
+                    placeholder="Nhập MSSV"
+                    required
+                    class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition"
+                  />
                 </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700"
+                    >Họ và Tên</label
+                  >
+                  <input
+                    type="text"
+                    name="student_name"
+                    placeholder="Nhập Họ và Tên"
+                    required
+                    class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
 
-                <!-- Nút thêm sinh viên -->
-                <div class="mt-4">
-                    <button type="button" id="addStudentBtn" class="w-full bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition">
-                        + Thêm Thành viên
-                    </button>
-                    <p id="student-limit-message" class="text-sm text-red-600 text-center mt-2"></p>
-                </div>
-                
-                <!-- Vùng nhập tên đề tài -->
-                <div class="mt-6 pt-6 border-t">
-                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Thông tin Đề tài</h3>
-                    <div>
-                        <label for="project_title" class="block text-sm font-medium text-gray-700">Tên Đề tài</label>
-                        <textarea id="project_title" rows="4" placeholder="Nhập tên đề tài chi tiết của nhóm..." required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition"></textarea>
-                    </div>
-                </div>
+          <!-- Nút thêm sinh viên -->
+          <div class="mt-4">
+            <button
+              type="button"
+              id="addStudentBtn"
+              class="w-full bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition"
+            >
+              + Thêm Thành viên
+            </button>
+            <p
+              id="student-limit-message"
+              class="text-sm text-red-600 text-center mt-2"
+            ></p>
+          </div>
 
-                <!-- Nút submit -->
-                <button type="submit" id="submitBtn" class="mt-8 w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform hover:scale-105">
-                    Đăng ký
-                </button>
-                <div id="formMessage" class="mt-4 text-center font-medium"></div>
-            </form>
+          <!-- Vùng nhập tên đề tài -->
+          <div class="mt-6 pt-6 border-t">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+              Thông tin Đề tài
+            </h3>
+            <div>
+              <label
+                for="project_title"
+                class="block text-sm font-medium text-gray-700"
+                >Tên Đề tài</label
+              >
+              <textarea
+                id="project_title"
+                rows="4"
+                placeholder="Nhập tên đề tài chi tiết của nhóm..."
+                required
+                class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Nút submit -->
+          <button
+            type="submit"
+            id="submitBtn"
+            class="mt-8 w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform hover:scale-105"
+          >
+            Đăng ký
+          </button>
+          <div id="formMessage" class="mt-4 text-center font-medium"></div>
+        </form>
+        <!-- Nút Xoá và Sửa nhóm -->
+         <!-- Hiển thị banner khu vực xoá và sửa nhóm vào giữa form-->
+         <div class="mt-6">
+          <div class="bg-blue-100 p-4 rounded-lg shadow-md">
+            <center>
+              <h3 class="text-lg font-semibold text-red-600">
+                Chức năng xoá và sửa nhóm (Chỉ dành cho nhóm trưởng)
+              </h3>
+            </center>
+         <!-- Hiển thị banner khu vực xoá và sửa nhóm -->
+        <div class="flex flex-col md:flex-row gap-4 mt-6">
+          <button
+            id="deleteGroupBtn"
+            class="w-full bg-red-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-600 transition"
+          >
+            Xoá nhóm
+          </button>
+          <button
+            id="editGroupBtn"
+            class="w-full bg-yellow-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-yellow-600 transition"
+          >
+            Sửa thông tin nhóm
+          </button>
         </div>
-        
-        <!-- Vùng hiển thị kết quả sau khi đăng ký thành công -->
-        <div id="result-wrapper" class="hidden bg-white p-6 md:p-8 rounded-xl shadow-lg">
-            <!-- Nội dung kết quả sẽ được chèn vào đây -->
+        <!-- Form nhập MSSV nhóm trưởng để xoá/sửa -->
+        <div id="groupActionForm" class="mt-4 hidden">
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Nhập MSSV nhóm trưởng:</label
+          >
+
+          <input
+            type="text"
+            id="groupLeaderIdInput"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md mb-2"
+            placeholder="Nhập MSSV nhóm trưởng..."
+          />
+          <div class="flex gap-2">
+            <button
+              id="confirmGroupActionBtn"
+              class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition"
+            >
+              Xác nhận
+            </button>
+            <button
+              id="cancelGroupActionBtn"
+              class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-md hover:bg-gray-400 transition"
+            >
+              Huỷ
+            </button>
+          </div>
+          <div
+            id="groupActionMessage"
+            class="mt-2 text-center font-medium"
+          ></div>
         </div>
+      </div>
 
+      <!-- Vùng hiển thị kết quả sau khi đăng ký thành công -->
+      <div
+        id="result-wrapper"
+        class="hidden bg-white p-6 md:p-8 rounded-xl shadow-lg"
+      >
+        <!-- Nội dung kết quả sẽ được chèn vào đây -->
+      </div>
 
-        <footer class="text-center mt-12 text-gray-500 text-sm">
-            <p>Học kỳ 3 &copy; <span id="year"></span></p>
-        </footer>
+      <footer class="text-center mt-12 text-gray-500 text-sm">
+        <p>Học kỳ 3 &copy; <span id="year"></span></p>
+      </footer>
+    </div>
+
+    <!-- Modal xác nhận xoá nhóm -->
+    <div id="deleteGroupModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+      <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6">
+        <h3 class="text-xl font-bold text-red-600 mb-4 text-center">Cảnh báo xoá nhóm</h3>
+        <div id="deleteGroupInfo" class="mb-4 text-gray-800"></div>
+        <div class="flex justify-center gap-4 mt-6">
+          <button id="confirmDeleteGroupBtn" class="bg-red-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-red-700 transition">Xoá</button>
+          <button id="cancelDeleteGroupBtn" class="bg-gray-300 text-gray-700 font-semibold py-2 px-6 rounded-md hover:bg-gray-400 transition">Huỷ</button>
+        </div>
+      </div>
     </div>
 
     <!-- Firebase -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        deleteDoc,
+        doc,
+        getDocs,
+        setDoc,
+      } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // =================================================================================
-        // BƯỚC 1: DÁN CẤU HÌNH FIREBASE CỦA BẠN VÀO ĐÂY
-        // =================================================================================
-        const firebaseConfig = {
-            apiKey: "AIzaSyDHfAxx8iTGGDZVDu5OGJq-Ar_rpxAXb4Y",
-            authDomain: "j2ee-application-development.firebaseapp.com",
-            projectId: "j2ee-application-development",
-            storageBucket: "j2ee-application-development.firebasestorage.app",
-            messagingSenderId: "54577590552",
-            appId: "1:54577590552:web:5d3857319b5327a0a46e6d",
-            measurementId: "G-EZ3QEE1QR6"
-        };
-        // =================================================================================
+      // =================================================================================
+      // BƯỚC 1: DÁN CẤU HÌNH FIREBASE CỦA BẠN VÀO ĐÂY
+      // =================================================================================
+      const firebaseConfig = {
+        apiKey: "AIzaSyDHfAxx8iTGGDZVDu5OGJq-Ar_rpxAXb4Y",
+        authDomain: "j2ee-application-development.firebaseapp.com",
+        projectId: "j2ee-application-development",
+        storageBucket: "j2ee-application-development.firebasestorage.app",
+        messagingSenderId: "54577590552",
+        appId: "1:54577590552:web:5d3857319b5327a0a46e6d",
+        measurementId: "G-EZ3QEE1QR6",
+      };
+      // =================================================================================
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
 
-        const form = document.getElementById('registrationForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const formMessage = document.getElementById('formMessage');
-        const studentListDiv = document.getElementById('student-list');
-        const addStudentBtn = document.getElementById('addStudentBtn');
-        const studentLimitMessage = document.getElementById('student-limit-message');
-        const formWrapper = document.getElementById('form-wrapper');
-        const resultWrapper = document.getElementById('result-wrapper');
-        
-        document.getElementById('year').textContent = new Date().getFullYear();
+      const form = document.getElementById("registrationForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const formMessage = document.getElementById("formMessage");
+      const studentListDiv = document.getElementById("student-list");
+      const addStudentBtn = document.getElementById("addStudentBtn");
+      const studentLimitMessage = document.getElementById(
+        "student-limit-message"
+      );
+      const formWrapper = document.getElementById("form-wrapper");
+      const resultWrapper = document.getElementById("result-wrapper");
 
-        let studentCount = 1;
-        const MAX_STUDENTS = 4;
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-        // HÀM RESET FORM VỀ TRẠNG THÁI BAN ĐẦU
-        function resetFormState() {
-            form.reset();
-            studentListDiv.innerHTML = `
+      let studentCount = 1;
+      const MAX_STUDENTS = 4;
+
+      // HÀM RESET FORM VỀ TRẠNG THÁI BAN ĐẦU
+      function resetFormState() {
+        form.reset();
+        studentListDiv.innerHTML = `
                 <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Thông tin Nhóm</h3>
                 <div class="student-entry p-4 border rounded-lg bg-gray-50">
                     <p class="font-medium text-gray-700 mb-2">Thành viên 1 (Nhóm trưởng)</p>
@@ -137,24 +273,25 @@
                     </div>
                 </div>
             `;
-            studentCount = 1;
-            formMessage.textContent = '';
-            studentLimitMessage.textContent = '';
-            addStudentBtn.disabled = false;
-            addStudentBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        studentCount = 1;
+        formMessage.textContent = "";
+        studentLimitMessage.textContent = "";
+        addStudentBtn.disabled = false;
+        addStudentBtn.classList.remove("opacity-50", "cursor-not-allowed");
+      }
+
+      // HÀM THÊM TRƯỜNG NHẬP LIỆU CHO SINH VIÊN MỚI
+      addStudentBtn.addEventListener("click", () => {
+        if (studentCount >= MAX_STUDENTS) {
+          studentLimitMessage.textContent = `Một nhóm chỉ có tối đa ${MAX_STUDENTS} thành viên.`;
+          return;
         }
 
-        // HÀM THÊM TRƯỜNG NHẬP LIỆU CHO SINH VIÊN MỚI
-        addStudentBtn.addEventListener('click', () => {
-            if (studentCount >= MAX_STUDENTS) {
-                studentLimitMessage.textContent = `Một nhóm chỉ có tối đa ${MAX_STUDENTS} thành viên.`;
-                return;
-            }
-
-            studentCount++;
-            const newStudentEntry = document.createElement('div');
-            newStudentEntry.className = 'student-entry p-4 border rounded-lg bg-gray-50 relative';
-            newStudentEntry.innerHTML = `
+        studentCount++;
+        const newStudentEntry = document.createElement("div");
+        newStudentEntry.className =
+          "student-entry p-4 border rounded-lg bg-gray-50 relative";
+        newStudentEntry.innerHTML = `
                 <p class="font-medium text-gray-700 mb-2">Thành viên ${studentCount}</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -168,71 +305,81 @@
                 </div>
                 <button type="button" class="remove-student-btn absolute top-2 right-2 text-red-500 hover:text-red-700 font-bold text-xl">&times;</button>
             `;
-            studentListDiv.appendChild(newStudentEntry);
+        studentListDiv.appendChild(newStudentEntry);
 
-            if (studentCount >= MAX_STUDENTS) {
-                addStudentBtn.disabled = true;
-                addStudentBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                studentLimitMessage.textContent = `Một nhóm chỉ có tối đa ${MAX_STUDENTS} thành viên.`;
-            }
+        if (studentCount >= MAX_STUDENTS) {
+          addStudentBtn.disabled = true;
+          addStudentBtn.classList.add("opacity-50", "cursor-not-allowed");
+          studentLimitMessage.textContent = `Một nhóm chỉ có tối đa ${MAX_STUDENTS} thành viên.`;
+        }
+      });
+
+      // HÀM XÓA MỘT THÀNH VIÊN
+      studentListDiv.addEventListener("click", (e) => {
+        if (e.target.classList.contains("remove-student-btn")) {
+          e.target.closest(".student-entry").remove();
+          const remainingStudents =
+            studentListDiv.querySelectorAll(".student-entry");
+          studentCount = remainingStudents.length;
+          remainingStudents.forEach((student, index) => {
+            const title = student.querySelector("p");
+            title.textContent = `Thành viên ${index + 1}${
+              index === 0 ? " (Nhóm trưởng)" : ""
+            }`;
+          });
+
+          // Kích hoạt lại nút "Thêm Thành viên" nếu số lượng < 4
+          if (studentCount < MAX_STUDENTS) {
+            addStudentBtn.disabled = false;
+            addStudentBtn.classList.remove("opacity-50", "cursor-not-allowed");
+            studentLimitMessage.textContent = ""; // Xóa thông báo lỗi nếu có
+          }
+        }
+      });
+
+      // HÀM GỬI DỮ LIỆU LÊN FIRESTORE
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        submitBtn.disabled = true;
+        submitBtn.textContent =
+          "Đang xử lý -  Đây là tính năng vừa được thêm bởi Cà Chua vIpPRo =))...";
+        formMessage.textContent = "";
+
+        const studentEntries = document.querySelectorAll(".student-entry");
+        const students = [];
+        studentEntries.forEach((entry) => {
+          const id = entry.querySelector('input[name="student_id"]').value;
+          const name = entry.querySelector('input[name="student_name"]').value;
+          students.push({ id, name });
         });
 
-        // HÀM XÓA MỘT THÀNH VIÊN
-        studentListDiv.addEventListener('click', (e) => {
-            if (e.target.classList.contains('remove-student-btn')) {
-                e.target.closest('.student-entry').remove();
-                const remainingStudents = studentListDiv.querySelectorAll('.student-entry');
-                studentCount = remainingStudents.length;
-                remainingStudents.forEach((student, index) => {
-                    const title = student.querySelector('p');
-                    title.textContent = `Thành viên ${index + 1}${index === 0 ? ' (Nhóm trưởng)' : ''}`;
-                });
+        const project_title = form.project_title.value;
 
-                // Kích hoạt lại nút "Thêm Thành viên" nếu số lượng < 4
-                if (studentCount < MAX_STUDENTS) {
-                    addStudentBtn.disabled = false;
-                    addStudentBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                    studentLimitMessage.textContent = ''; // Xóa thông báo lỗi nếu có
-                }
-            }
-        });
+        try {
+          await addDoc(collection(db, "projects"), {
+            students: students,
+            project_title: project_title,
+            registration_time: new Date(),
+          });
 
-        // HÀM GỬI DỮ LIỆU LÊN FIRESTORE
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Đang xử lý...';
-            formMessage.textContent = '';
-
-            const studentEntries = document.querySelectorAll('.student-entry');
-            const students = [];
-            studentEntries.forEach(entry => {
-                const id = entry.querySelector('input[name="student_id"]').value;
-                const name = entry.querySelector('input[name="student_name"]').value;
-                students.push({ id, name });
-            });
-
-            const project_title = form.project_title.value;
-
-            try {
-                await addDoc(collection(db, "projects"), {
-                    students: students,
-                    project_title: project_title,
-                    registration_time: new Date()
-                });
-                
-                // HIỂN THỊ KẾT QUẢ
-                let studentRows = students.map((student, index) => `
+          // HIỂN THỊ KẾT QUẢ
+          let studentRows = students
+            .map(
+              (student, index) => `
                     <tr class="border-b hover:bg-gray-50">
                         <td class="p-3 text-center">${index + 1}</td>
                         <td class="p-3">${student.id}</td>
                         <td class="p-3">${student.name}</td>
-                        <td class="p-3">${index === 0 ? '<strong>Nhóm trưởng</strong>' : ''}</td>
+                        <td class="p-3">${
+                          index === 0 ? "<strong>Nhóm trưởng</strong>" : ""
+                        }</td>
                     </tr>
-                `).join('');
+                `
+            )
+            .join("");
 
-                resultWrapper.innerHTML = `
+          resultWrapper.innerHTML = `
                     <h2 class="text-2xl font-bold text-green-600 text-center mb-6">✅ Đăng ký Thành Công!</h2>
                     <div class="space-y-4">
                         <div>
@@ -257,23 +404,189 @@
                         </div>
                     </div>
                 `;
-                
-                formWrapper.classList.add('hidden');
-                resultWrapper.classList.remove('hidden');
 
-                resetFormState();
+          formWrapper.classList.add("hidden");
+          resultWrapper.classList.remove("hidden");
 
-            } catch (error) {
-                console.error("Error adding document: ", error);
-                formMessage.textContent = '❌ Có lỗi xảy ra, vui lòng thử lại.';
-                formMessage.className = 'mt-4 text-center font-medium text-red-600';
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Hoàn tất Đăng ký';
-            }
+          resetFormState();
+        } catch (error) {
+          console.error("Error adding document: ", error);
+          formMessage.textContent = "❌ Có lỗi xảy ra, vui lòng thử lại.";
+          formMessage.className = "mt-4 text-center font-medium text-red-600";
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Hoàn tất Đăng ký";
+        }
+      });
+
+      // ================== BỔ SUNG XỬ LÝ XOÁ/SỬA NHÓM =====================
+      let currentAction = null; // 'delete' hoặc 'edit'
+      const deleteGroupBtn = document.getElementById("deleteGroupBtn");
+      const editGroupBtn = document.getElementById("editGroupBtn");
+      const groupActionForm = document.getElementById("groupActionForm");
+      const groupLeaderIdInput = document.getElementById("groupLeaderIdInput");
+      const confirmGroupActionBtn = document.getElementById(
+        "confirmGroupActionBtn"
+      );
+      const cancelGroupActionBtn = document.getElementById(
+        "cancelGroupActionBtn"
+      );
+      const groupActionMessage = document.getElementById("groupActionMessage");
+
+      // Hiện form nhập MSSV nhóm trưởng
+      deleteGroupBtn.addEventListener("click", () => {
+        currentAction = "delete";
+        groupActionForm.classList.remove("hidden");
+        groupActionMessage.textContent = "";
+      });
+      editGroupBtn.addEventListener("click", () => {
+        currentAction = "edit";
+        groupActionForm.classList.remove("hidden");
+        groupActionMessage.textContent = "";
+      });
+      cancelGroupActionBtn.addEventListener("click", () => {
+        groupActionForm.classList.add("hidden");
+        groupLeaderIdInput.value = "";
+        groupActionMessage.textContent = "";
+      });
+
+      // Modal xác nhận xoá nhóm
+      const deleteGroupModal = document.getElementById("deleteGroupModal");
+      const deleteGroupInfo = document.getElementById("deleteGroupInfo");
+      const confirmDeleteGroupBtn = document.getElementById("confirmDeleteGroupBtn");
+      const cancelDeleteGroupBtn = document.getElementById("cancelDeleteGroupBtn");
+      let foundDocForDelete = null;
+
+      confirmGroupActionBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const leaderId = groupLeaderIdInput.value.trim();
+        if (!leaderId) {
+          groupActionMessage.textContent = "Vui lòng nhập MSSV nhóm trưởng!";
+          return;
+        }
+        groupActionMessage.textContent = "Đang kiểm tra...";
+        // Tìm document có students[0].id == leaderId
+        const q = await collection(db, "projects");
+        const snapshot = await getDocs(q);
+        let foundDoc = null;
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          if (data.students && data.students[0] && data.students[0].id === leaderId) {
+            foundDoc = { id: doc.id, data };
+          }
         });
+        if (!foundDoc) {
+          groupActionMessage.textContent = "Không tìm thấy nhóm với MSSV nhóm trưởng này!";
+          return;
+        }
+        if (currentAction === "delete") {
+          // Hiện modal xác nhận xoá nhóm
+          foundDocForDelete = foundDoc;
+          let infoHtml = `<div class='mb-2'><span class='font-semibold'>Tên đề tài:</span> ${foundDoc.data.project_title}</div>`;
+          infoHtml += `<div class='mb-2 font-semibold'>Danh sách thành viên:</div><ul class='list-disc pl-6'>`;
+          foundDoc.data.students.forEach((s, idx) => {
+            infoHtml += `<li>${idx + 1}. ${s.id} - ${s.name}${idx === 0 ? ' (Nhóm trưởng)' : ''}</li>`;
+          });
+          infoHtml += `</ul><div class='mt-4 text-red-600 font-bold text-center'>Bạn có thực sự muốn xoá nhóm chứ ? Hành động này không thể hoàn tác được!</div>`;
+          deleteGroupInfo.innerHTML = infoHtml;
+          deleteGroupModal.classList.remove("hidden");
+        } else if (currentAction === "edit") {
+          // Hiện lại form đăng ký với dữ liệu nhóm
+          groupActionForm.classList.add("hidden");
+          formWrapper.classList.remove("hidden");
+          resultWrapper.classList.add("hidden");
+          resetFormState();
+          // Đổ dữ liệu nhóm lên form
+          const students = foundDoc.data.students;
+          studentListDiv.innerHTML = `<h3 class='text-lg font-semibold text-gray-800 border-b pb-2'>Thông tin Nhóm</h3>`;
+          students.forEach((student, idx) => {
+            const entry = document.createElement("div");
+            entry.className = "student-entry p-4 border rounded-lg bg-gray-50";
+            entry.innerHTML = `
+              <p class="font-medium text-gray-700 mb-2">Thành viên ${idx + 1}${
+              idx === 0 ? " (Nhóm trưởng)" : ""
+            }</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Mã số Sinh viên</label>
+                  <input type="text" name="student_id" value="${
+                    student.id
+                  }" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Họ và Tên</label>
+                  <input type="text" name="student_name" value="${
+                    student.name
+                  }" required class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition">
+                </div>
+              </div>
+            `;
+            studentListDiv.appendChild(entry);
+          });
+          studentCount = students.length;
+          if (studentCount >= MAX_STUDENTS) {
+            addStudentBtn.disabled = true;
+            addStudentBtn.classList.add("opacity-50", "cursor-not-allowed");
+          } else {
+            addStudentBtn.disabled = false;
+            addStudentBtn.classList.remove("opacity-50", "cursor-not-allowed");
+          }
+          document.getElementById("project_title").value =
+            foundDoc.data.project_title;
+          // Khi submit, cập nhật lại document thay vì tạo mới
+          form.onsubmit = async (ev) => {
+            ev.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Đang xử lý...";
+            formMessage.textContent = "";
+            const studentEntries = document.querySelectorAll(".student-entry");
+            const students = [];
+            studentEntries.forEach((entry) => {
+              const id = entry.querySelector('input[name="student_id"]').value;
+              const name = entry.querySelector(
+                'input[name="student_name"]'
+              ).value;
+              students.push({ id, name });
+            });
+            const project_title = form.project_title.value;
+            try {
+              await setDoc(doc(db, "projects", foundDoc.id), {
+                students: students,
+                project_title: project_title,
+                registration_time: new Date(),
+              });
+              formWrapper.classList.add("hidden");
+              resultWrapper.classList.remove("hidden");
+              form.onsubmit = null; // reset lại hành vi mặc định
+              resetFormState();
+              formMessage.textContent = "";
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Hoàn tất Đăng ký";
+              groupActionMessage.textContent =
+                "Đã cập nhật thông tin nhóm thành công!";
+            } catch (error) {
+              formMessage.textContent = "❌ Có lỗi xảy ra khi cập nhật.";
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Hoàn tất Đăng ký";
+            }
+          };
+        }
+      });
 
-        
+      // Xử lý nút Xoá trên modal
+      confirmDeleteGroupBtn.addEventListener("click", async () => {
+        if (foundDocForDelete) {
+          await deleteDoc(doc(db, "projects", foundDocForDelete.id));
+          deleteGroupModal.classList.add("hidden");
+          groupActionForm.classList.add("hidden");
+          groupLeaderIdInput.value = "";
+          groupActionMessage.textContent = "Đã xoá nhóm thành công!";
+        }
+      });
+      // Xử lý nút Huỷ trên modal
+      cancelDeleteGroupBtn.addEventListener("click", () => {
+        deleteGroupModal.classList.add("hidden");
+      });
     </script>
-</body>
+  </body>
 </html>
